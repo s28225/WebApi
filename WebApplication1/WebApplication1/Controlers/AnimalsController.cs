@@ -9,9 +9,9 @@ public class AnimalsController : ControllerBase
 {
     public static readonly List<Animal> _animals = new List<Animal>()
     {
-        new Animal ( 1,  "Thomas",  "Cat",  "White", 3.23 ),
-        new Animal ( 2,  "Ball",  "Dog",  "Brown", 37.45 ),
-        new Animal ( 3,  "Splinter",  "Rat",  "Black", 0.45 )
+        new Animal ( "Thomas",  "Cat",  "White", 3.23 ),
+        new Animal ( "Ball",  "Dog",  "Brown", 37.45 ),
+        new Animal ( "Splinter",  "Rat",  "Black", 0.45 )
 
     };
     
@@ -49,8 +49,9 @@ public class AnimalsController : ControllerBase
             return NotFound("There no one with this id");
         }
 
-        _animals.Remove(animalToEdit);
-        _animals.Add(animal);
+        animal.SetIdAnimal(id);
+        _animals[id-1] = animal;
+        Animal.id--;
         return NoContent();
     }
 
